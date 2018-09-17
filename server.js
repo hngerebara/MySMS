@@ -32,3 +32,5 @@ try {
 } catch (e) {
     winston.error(`Error startig servers`, e);
 }
+
+module.exports = app;
