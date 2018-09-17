@@ -7,7 +7,8 @@ const config = {
     database: process.env.DEV_DB,
     host: process.env.HOST,
     port: process.env.DB_PORT,
-    dialect: 'postgres'
+    dialect: 'postgres',
+    "use_env_variable": process.env.DATABASE_URL,
   },
   test: {
     url: process.env.TEST_DATABASE_URL,

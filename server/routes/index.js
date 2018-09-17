@@ -18,15 +18,10 @@ module.exports = (app) => {
         .delete(contactsController.destroyContact);
 
     app
-        .route('/api/sms')
-        .post(messagesController.createMessage)
-        .get(messagesController.listMessages);
+        .route('/api/contacts/:contactId/sms')
+        .post(messagesController.createMessage);
 
     app
-        .route('/api/sms/:messageId')
-        .get(messagesController.retrieveMessage)
-
-    app
-        .route('/api/contact/:contactId/sms/:messageId')
+        .route('/api/contacts/:contactId/sms/:messageId')
         .delete(messagesController.destroyMessage);
 };

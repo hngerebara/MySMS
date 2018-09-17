@@ -9,10 +9,17 @@ module.exports = {
                 fullName: req.body.fullName,
                 phoneNumber: req.body.phoneNumber
             })
-            return res.status(201).send(contact);
+            return res.status(201).json({
+                success: true,
+                data: contact,
+                message: 'Successfuly created contact'
+            });
 
         }catch(ex){
-            return res.status(400).send(ex);
+            return res.status(400).json({
+                success: false,
+                error: ex
+            });
         } 
     },
 
@@ -23,15 +30,27 @@ module.exports = {
                 //     model: Message,
                 //     as: 'Messages',
                 // }],
+                order: [
+                    ['createdAt', 'DESC'],
+                    // [{ model: Message, as: 'Messages' }, 'createdAt', 'DESC'],
+                ],
             });
             if (!contacts) { 
                 return res.status(404).json({
+                    success: false,
                     message: 'No contacts found'
                 }); 
             }
-            res.status(200).send(contacts);
+            res.status(200).json({
+                success: true,
+                data: contacts,
+                message: 'Successfuly retrieved all contacts'
+            });
         } catch(ex) {
-             return res.status(400).send(ex);
+             return res.status(400).json({
+                success: false,
+                error: ex
+             });
         }
     },
 
@@ -39,17 +58,27 @@ module.exports = {
         try{
             let contact = await Contact.findById(req.params.contactId, {
                 // include: [{
-                //     model: Messages,
+                //     model: Message,
                 //     as: 'Messages',
                 // }],
             });
 
-            if (!contact) return res.status(404).send({message: 'Contact Not Found', });
+            if (!contact) return res.status(404).json({
+                success: false,
+                message: 'Contact Not Found'
+            });
             
-            return res.status(200).send(contact);
+            return res.status(200).json({
+                success: true,
+                data: contact,
+                message: 'Successfuly retrieved contact'
+            });
 
         }catch(ex){
-            return res.status(400).send(ex);
+            return res.status(400).json({
+                success: false,
+                error: ex
+            });
         }
     },
 
@@ -57,15 +86,25 @@ module.exports = {
         try {
             let contact =  Contact.findById(req.params.contactId, {});
                
-            if (!contact) return res.status(404).send({message: 'Contact Not Found', });
+            if (!contact) return res.status(404).json({
+                success: false,
+                message: 'Contact Not Found'
+            });
             
-            let updatedCotact = await contact.update({
+            let updatedContact = await contact.update({
                     fullName: req.body.fullName || contact.fullName,
                   })
-            return res.status(200).send(updatedCotact);
+            return res.status(200).json({
+                success: true,
+                data: updatedContact,
+                message: 'Successfuly updated contact'
+            });
         
         }catch(ex) {
-            return res.status(400).send(ex)
+            return res.status(400).json({
+                success: false,
+                error: ex
+            })
         };
     },
 
@@ -73,12 +112,21 @@ module.exports = {
         try{
             let contact =  await Contact.findById(req.params.contactId)
             
-            if (!contact) return res.status(404).send({message: 'Contact Not Found', });
+            if (!contact) return res.status(404).json({
+                success: false,
+                message: 'Contact Not Found'
+            });
             await contact.destroy()
-            return res.status(200).json({message: `Successfully deleted contact with id ${req.params.contactId}`});
+            return res.status(200).json({
+                success: true,
+                message: `Successfully deleted contact with id ${req.params.contactId}`
+            });
         
         }catch(ex){
-            return res.status(400).send(ex);
+            return res.status(400).json({
+                success: false,
+                error: ex
+            });
         } 
     },   
 };
