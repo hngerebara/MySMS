@@ -9,12 +9,12 @@ module.exports = {
                 success: false,
                 message: 'Body cannot be empty'
             });
-        }
+        };
         try{
             let contact = await Contact.create({
                 fullName: req.body.fullName,
-                phoneNumber: req.body.phoneNumber
-            })
+                phoneNumber: phoneNumber
+            });
 
             return res.status(201).json({
                 success: true,
@@ -27,19 +27,19 @@ module.exports = {
                 success: false,
                 error: ex
             });
-        } 
+        }  
     },
 
     async listContacts(req, res) {
         try{
             let contacts = await Contact.findAll({
-                // include: [{
-                //     model: Message,
-                //     as: 'Messages',
-                // }],
+                include: [{
+                    model: Message,
+                    as: 'Messages',
+                }],
                 order: [
                     ['createdAt', 'DESC'],
-                    // [{ model: Message, as: 'Messages' }, 'createdAt', 'DESC'],
+                    [{ model: Message, as: 'Messages' }, 'createdAt', 'DESC'],
                 ],
             });
             if (!contacts) { 
@@ -63,11 +63,12 @@ module.exports = {
 
     async retrieveContact(req, res) {
         try{
-            let contact = await Contact.findById(req.params.contactId, {
-                // include: [{
-                //     model: Message,
-                //     as: 'Messages',
-                // }],
+            let contact = await Contact.findOne({
+                where: {
+                    id: req.params.contactId
+                }, include: [{
+                    model: Message
+                }]
             });
 
             if (!contact) return res.status(404).json({

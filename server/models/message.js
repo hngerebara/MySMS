@@ -10,16 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
     },
-    receiverId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      unique: true
-    },
-    senderId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      unique: true
-    },
+    
     status: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -28,11 +19,13 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Message.associate = (models) => {
-    Message.belongsTo(models.Contact, { 
+    Message.belongsTo(models.Contact, {
+      as: 'sender',
       foreignKey: 'senderId',
       onDelete: 'CASCADE',
     })
     Message.belongsTo(models.Contact, {
+      as: 'reciever',
       foreignKey: 'receiverId',
       onDelete: 'CASCADE',
     })

@@ -2,6 +2,7 @@ const express = require('express'),
     winston = require('winston'),
     bodyParser = require('body-parser'),
     logger = require('morgan'),
+    models = require('./server/models/index.js'),
     app = express();
 
 
@@ -28,7 +29,10 @@ app.get('*', (req, res) => res.status(200).send({
 
 try {
     //Listen on assigned port
-    app.listen(port, () => winston.info(`App running on localhost:${port}`));
+    models.sequelize.sync().then(() => {
+        app.listen(port, () => winston.info(`App running on localhost:${port}`));
+    })
+    
 } catch (e) {
     winston.error(`Error startig servers`, e);
 }

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     phoneNumber: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       unique: {
         msg: 'Phone number already exists'
@@ -20,16 +20,13 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true
       }
     }
-  });
-
+  })
   Contact.associate = (models) => {
     Contact.hasMany(models.Message, {
-      foreignKey: 'senderId',
-      as: 'sender',
+      foreignKey: 'senderId'
     });
     Contact.hasMany(models.Message, {
-      foreignKey: 'receiverId',
-      as: 'receiver',
+      foreignKey: 'receiverId'
     });
   };
 
