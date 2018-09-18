@@ -3,6 +3,8 @@ node_js:
   - 7.4.0
 services:
   - postgresql
+before_script:
+  - psql -c 'create database sms_api_test;' -U postgres
 script: "npm run test"
 after_success: 
-  - npm run coveralls
+  - npm run coverage
