@@ -2,7 +2,7 @@
 
 MySMS is an sms management system that enables one send an sms from one contact to another.
 
-# Features!
+### Features!
 
 - Contacts can be created with the following fields:
 - - Full name
