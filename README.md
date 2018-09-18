@@ -1,5 +1,7 @@
 # MySMS
 
+[![Build Status](https://travis-ci.com/hngerebara/SMS-Management-Api.svg?token=qbBk8baJpsNJr5Dz8G6p&branch=master)](https://travis-ci.com/hngerebara/SMS-Management-Api)
+
 MySMS is an sms management system that enables one send an sms from one contact to another.
 
 ### Features!
