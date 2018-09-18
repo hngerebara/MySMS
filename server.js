@@ -1,6 +1,7 @@
 const express = require('express'),
     winston = require('winston'),
     bodyParser = require('body-parser'),
+    logger = require('morgan'),
     app = express();
 
 
@@ -8,6 +9,8 @@ const express = require('express'),
 const port = process.env.PORT || '5000';
 app.set('port', port);
 
+
+app.use(logger('dev'));
 
 winston.info('adding middleware - body parser...');
 
@@ -29,3 +32,5 @@ try {
 } catch (e) {
     winston.error(`Error startig servers`, e);
 }
+
+module.exports = app;
