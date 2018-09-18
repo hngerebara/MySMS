@@ -70,6 +70,7 @@ $ npm test
 | POST | /contacts/:contactId/sms/:messageId | Create a message |
 | DELETE | /contacts/<id>/sms/<id> | Deletes a message |
 
+API documentation [here](https://app.swaggerhub.com/apis/hopeaz/sms_api/1.0.0)
 
 ### Development
 
