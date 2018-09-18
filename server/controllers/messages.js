@@ -2,6 +2,13 @@ const Message = require('../models').Message;
 
 module.exports = {
     async createMessage(req, res) {
+
+        if(Object.keys(req.body).length === 0){
+            return res.status(400).json({
+                success: false,
+                message: 'Body cannot be empty'
+            });
+        }
         const { content, receiverId } = req.body;
         try{
             let message = await Message.create({
@@ -17,10 +24,15 @@ module.exports = {
             });
 
         }catch(ex){
-            return res.status(400).json({
-                success: false,
-                error: ex
-            });
+            switch(ex.name){
+                case 'SequelizeForeignKeyConstraintError':
+                    return res.status(404).json({success: false, error: "Recevier does not exist"});
+                default:
+                    return res.status(400).json({
+                        success: false,
+                        error: ex
+                    });
+            }
         } 
     },
 

@@ -91,7 +91,7 @@ module.exports = {
 
     async updateContact(req, res) {
         try {
-            let contact =  Contact.findById(req.params.contactId, {});
+            let contact = await Contact.findById(req.params.contactId);
                
             if (!contact) return res.status(404).json({
                 success: false,
@@ -117,7 +117,7 @@ module.exports = {
 
     async destroyContact(req, res) {
         try{
-            let contact =  await Contact.findById(req.params.contactId)
+            let contact =  await Contact.findById(req.params.contactId);
             
             if (!contact) return res.status(404).json({
                 success: false,
