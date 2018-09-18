@@ -4,11 +4,18 @@ const Contact = require('../models').Contact,
 
 module.exports = {
     async createContact(req, res) {
+        if(Object.keys(req.body).length === 0){
+            return res.status(400).json({
+                success: false,
+                message: 'Body cannot be empty'
+            });
+        }
         try{
             let contact = await Contact.create({
                 fullName: req.body.fullName,
                 phoneNumber: req.body.phoneNumber
             })
+
             return res.status(201).json({
                 success: true,
                 data: contact,
@@ -84,7 +91,7 @@ module.exports = {
 
     async updateContact(req, res) {
         try {
-            let contact =  Contact.findById(req.params.contactId, {});
+            let contact = await Contact.findById(req.params.contactId);
                
             if (!contact) return res.status(404).json({
                 success: false,
@@ -110,7 +117,7 @@ module.exports = {
 
     async destroyContact(req, res) {
         try{
-            let contact =  await Contact.findById(req.params.contactId)
+            let contact =  await Contact.findById(req.params.contactId);
             
             if (!contact) return res.status(404).json({
                 success: false,

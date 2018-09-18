@@ -12,7 +12,7 @@ module.exports = (app) => {
         .get(contactsController.listContacts);
   
     app
-        .route('/api/contacts/:contactId',)
+        .route('/api/contacts/:contactId([0-9]+)')
         .get(contactsController.retrieveContact)
         .put(contactsController.updateContact)
         .delete(contactsController.destroyContact);
