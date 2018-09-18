@@ -29,9 +29,7 @@ app.get('*', (req, res) => res.status(200).send({
 
 try {
     //Listen on assigned port
-    models.sequelize.sync().then(() => {
-        app.listen(port, () => winston.info(`App running on localhost:${port}`));
-    })
+    app.listen(port, () => winston.info(`App running on localhost:${port}`));
     
 } catch (e) {
     winston.error(`Error startig servers`, e);

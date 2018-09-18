@@ -13,7 +13,7 @@ module.exports = {
         try{
             let contact = await Contact.create({
                 fullName: req.body.fullName,
-                phoneNumber: phoneNumber
+                phoneNumber: req.body.phoneNumber
             });
 
             return res.status(201).json({

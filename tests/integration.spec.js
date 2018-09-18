@@ -33,7 +33,7 @@ describe('SMS API',() => {
                 });
             });
         
-            it('does not allow empty fields', (done) => {
+            it('does not allow empty name field', (done) => {
                 const req = {
                     phoneNumber: '09086576454'
                 };
@@ -54,7 +54,7 @@ describe('SMS API',() => {
             it('creates a new contact', (done) => {
                 const req = {
                   fullName: 'Hope Ng',
-                  phoneNumber: 900348342,
+                  phoneNumber: '900348342',
                 };
 
                 request(app)
