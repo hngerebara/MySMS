@@ -68,7 +68,7 @@ $ npm test
 | PUT | /contacts/:contactId | Finds matching instance of a contact |
 | DELETE | /contacts/:contactId | Updates contact |
 | POST | /contacts/:contactId/sms/:messageId | Create a message |
-| DELETE | /sms/<id> | Deletes a message |
+| DELETE | /sms/:messageId | Deletes a message |
 
 API documentation [here](https://web.postman.co/collections/4284912-ee0e707d-6ece-4103-ad3d-f42e7f73ad1b?workspace=24d7221d-048c-4101-8a5d-414bd5b5b9d4#fda1de8d-30c1-4b5d-8fcb-d01b80a3853b)
 
