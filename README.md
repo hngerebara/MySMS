@@ -1,8 +1,6 @@
 # MySMS
 
-[![Build Status](https://travis-ci.com/hngerebara/MySMS.svg?branch=master)](https://travis-ci.com/hngerebara/MySMS)
-
-[![Coverage Status](https://coveralls.io/repos/github/hngerebara/MySMS/badge.svg)](https://coveralls.io/github/hngerebara/MySMS)
+[![Build Status](https://travis-ci.com/hngerebara/MySMS.svg?branch=master)](https://travis-ci.com/hngerebara/MySMS) [![Coverage Status](https://coveralls.io/repos/github/hngerebara/MySMS/badge.svg)](https://coveralls.io/github/hngerebara/MySMS)
 
 MySMS is an sms management system that enables one send an sms from one contact to another.
 
