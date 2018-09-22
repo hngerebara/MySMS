@@ -17,7 +17,7 @@ MySMS is an sms management system that enables one send an sms from one contact 
 - When a contact is deleted, all messages associated with that contact are also deleted
 
 ### Tools and Modules Required
-* [NodeJs](https://nodejs.org/en) - 
+* [NodeJs](https://nodejs.org/en) - Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 *  Express - fast node.js network app framework
 * [PostgreSQL](https://www.postgresql.org/)- The Relational database
 * [Sequelize.js](http://docs.sequelizejs.com/manual/installation/getting-started.html) - An ORM to interface with PostgresQL
@@ -68,9 +68,9 @@ $ npm test
 | PUT | /contacts/:contactId | Finds matching instance of a contact |
 | DELETE | /contacts/:contactId | Updates contact |
 | POST | /contacts/:contactId/sms/:messageId | Create a message |
-| DELETE | /contacts/<id>/sms/<id> | Deletes a message |
+| DELETE | /sms/<id> | Deletes a message |
 
-API documentation [here](https://app.swaggerhub.com/apis/hopeaz/sms_api/1.0.0)
+API documentation [here](https://web.postman.co/collections/4284912-ee0e707d-6ece-4103-ad3d-f42e7f73ad1b?workspace=24d7221d-048c-4101-8a5d-414bd5b5b9d4#fda1de8d-30c1-4b5d-8fcb-d01b80a3853b)
 
 ### Development
 
