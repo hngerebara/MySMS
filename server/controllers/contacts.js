@@ -34,12 +34,11 @@ module.exports = {
         try{
             let contacts = await Contact.findAll({
                 include: [{
-                    model: Message,
-                    as: 'Messages',
+                    model: Message
                 }],
                 order: [
                     ['createdAt', 'DESC'],
-                    [{ model: Message, as: 'Messages' }, 'createdAt', 'DESC'],
+                    [{ model: Message }, 'createdAt', 'DESC'],
                 ],
             });
             if (!contacts) { 

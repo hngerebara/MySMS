@@ -222,7 +222,7 @@ describe('SMS API',() => {
                         return done(err);
                     }
                     expect(res.body.success).to.equal(false);
-                    expect(res.body.error).to.equal('Recevier does not exist');
+                    expect(res.body.error).to.equal('Receiver does not exist');
                     done();
                 });
             });

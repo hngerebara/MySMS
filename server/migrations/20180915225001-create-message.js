@@ -13,6 +13,24 @@ module.exports = {
       status: {
         type: Sequelize.BOOLEAN
       },
+      receiverId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Contacts',
+          key: 'id',
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade',
+      },
+      senderId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Contacts',
+          key: 'id',
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade',
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

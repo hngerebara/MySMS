@@ -9,6 +9,9 @@ module.exports = {
                 message: 'Body cannot be empty'
             });
         }
+        if(req.body.receiverId == undefined){
+            res.status(400).json({message: 'Receiver Id cannot be null'})
+        }
         const { content, receiverId } = req.body;
         try{
             let message = await Message.create({
@@ -26,7 +29,7 @@ module.exports = {
         }catch(ex){
             switch(ex.name){
                 case 'SequelizeForeignKeyConstraintError':
-                    return res.status(404).json({success: false, error: "Recevier does not exist"});
+                    return res.status(404).json({success: false, error: "Receiver does not exist"});
                 default:
                     return res.status(400).json({
                         success: false,
