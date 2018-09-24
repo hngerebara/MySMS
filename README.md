@@ -48,6 +48,10 @@ If you have postgres db already online, then copy the db url and add it to the `
    HOST=127.0.0.1
    DB_PORT=5432
    ```
+Run migration 
+```sh
+$ sequelize db:migrate
+```
 Start the server.
 
 ```sh
